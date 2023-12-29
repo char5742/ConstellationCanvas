@@ -1,16 +1,10 @@
-# myapp
+# ConstellationCanvas
 
-A new Flutter project.
+成長記録アプリ「ConstellationCanvas」の実装リポジトリです。
 
-## Getting Started
+## 概要
+ConstellationCanvasは、ソフトウェアエンジニアとしての成長を反映するためのアプリです。
+ベースはブログで、学んだことや実装したことを記事にして残すことができます。
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+しかしそれだけではなく、私が学んだ技術を組込んでいくことでさまざまな機能を持つアプリに成長していきます。
+そのため、アプリの成長とともに私の成長も可視化できるようになっています。
