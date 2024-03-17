@@ -2,9 +2,10 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
-import {remarkLinkCard} from "./src/components/linkcard/remarkLinkCard";
-import remarkBreaks from 'remark-breaks';
+import { remarkLinkCard } from "./src/components/linkcard/remarkLinkCard";
+import remarkBreaks from "remark-breaks";
 import tailwind from "@astrojs/tailwind";
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,9 +17,15 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
+    partytown({
+      // Adds dataLayer.push as a forwarding-event.
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
   ],
   markdown: {
-    remarkPlugins: [remarkLinkCard,remarkBreaks],
+    remarkPlugins: [remarkLinkCard, remarkBreaks],
     extendDefaultPlugins: true,
   },
 });
