@@ -1,0 +1,66 @@
+---
+export type Props = {
+  node: string;
+};
+
+type NodeData = {
+  title: string;
+  description: string;
+  url: string;
+  imageUrl: string;
+  faviconUrl: string;
+};
+
+const props = Astro.props;
+const nodeData: NodeData = JSON.parse(props.node);
+---
+
+<div class="my-6">
+  <div
+    class="border-2 border-gray-200 rounded-xl bg-white shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl h-32 flex"
+  >
+    <a
+      href={nodeData.url}
+      target="_blank"
+      class="block text-inherit no-underline flex-1 p-5"
+    >
+      <div class="flex items-center h-full">
+        <div class="flex-shrink-0">
+          <div class="relative">
+            <img
+              src={nodeData.imageUrl}
+              alt={nodeData.title}
+              class="w-20 h-20 rounded-lg object-cover"
+            />
+            <div class="absolute top-0 left-0 mt-2 ml-2">
+              <img
+                src={nodeData.faviconUrl}
+                alt={nodeData.title}
+                class="w-4 h-4 rounded-full"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="ml-6 flex-1 overflow-hidden">
+          <h3
+            class="text-xl font-bold text-gray-800 hover:text-blue-600 transition duration-200 ease-in-out line-clamp-1"
+          >
+            {nodeData.title}
+          </h3>
+          <p class="description">{nodeData.description}</p>
+          <p class="url">{nodeData.url}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<style>
+  .description {
+    @apply text-gray-600 text-sm line-clamp-2 mb-0;
+  }
+
+  .url {
+    @apply text-gray-500 text-xs mt-1 truncate mb-0;
+  }
+</style>

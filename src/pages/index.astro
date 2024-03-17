@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import PostCard from "@/components/PostCard.astro";
+import "@/styles/globals.css";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout>
+  <p>
+    こんにちは！私は、機械学習、アプリ開発が好きなエンジニアです。このサイトは、私の活動や技術情報を共有するための場所です。
+  </p>
+  <section>
+    <h3>最新の記事</h3>
+    <ul class="flex overflow-x-auto">
+      {
+        posts.map((post) => (
+          <li class="mr-1 flex-none w-64">
+            <PostCard post={post} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>
