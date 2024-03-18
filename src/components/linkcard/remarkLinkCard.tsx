@@ -66,7 +66,6 @@ async function fetchMetadata(url: string): Promise<{
       }`,
     };
   } catch (e) {
-    console.error(e);
     return {
       title: "",
       description: "",
