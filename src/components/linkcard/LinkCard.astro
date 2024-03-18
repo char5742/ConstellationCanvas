@@ -58,13 +58,7 @@ const nodeData: NodeData = JSON.parse(props.node);
 
 <style>
   .image {
-    @apply rounded-lg object-fill h-20 w-40;
-  }
-
-  @media screen and (max-width: 640px) {
-    .image {
-      @apply h-16 w-16;
-    }
+    @apply rounded-lg object-fill h-16 w-16 md:h-20 md:w-40;
   }
 
   .description {
