@@ -16,6 +16,7 @@ export default defineConfig({
     react(),
     tailwind({
       applyBaseStyles: false,
+      nesting: true,
     }),
     partytown({
       // Adds dataLayer.push as a forwarding-event.
