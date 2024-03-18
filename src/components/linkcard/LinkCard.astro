@@ -18,12 +18,12 @@ const nodeData: NodeData = JSON.parse(props.node);
 
 <div class="my-6">
   <div
-    class="border-2 border-gray-200 rounded-xl bg-white shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl h-32 flex"
+    class="border-2 border-gray-200 rounded-xl bg-white shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl"
   >
     <a
       href={nodeData.url}
       target="_blank"
-      class="block text-inherit no-underline flex-1 p-5"
+      class="block text-inherit no-underline p-5"
     >
       <div class="flex items-center h-full">
         <div class="flex-shrink-0">
@@ -31,19 +31,10 @@ const nodeData: NodeData = JSON.parse(props.node);
             <Image
               src={nodeData.imageUrl}
               alt={nodeData.title}
-              width={80}
+              width={160}
               height={80}
               class="rounded-lg object-cover"
             />
-            <div class="absolute top-0 left-0 mt-2 ml-2">
-              <Image
-                src={nodeData.faviconUrl}
-                alt={nodeData.title}
-                width={16}
-                height={16}
-                class="rounded-full"
-              />
-            </div>
           </div>
         </div>
         <div class="ml-6 flex-1 overflow-hidden">
@@ -53,7 +44,16 @@ const nodeData: NodeData = JSON.parse(props.node);
             {nodeData.title}
           </h3>
           <p class="description">{nodeData.description}</p>
-          <p class="url">{nodeData.url}</p>
+          <div class="flex mt-1">
+            <Image
+              src={nodeData.faviconUrl}
+              alt={nodeData.title}
+              width={16}
+              height={16}
+              class="rounded-full object-cover mr-2"
+            />
+            <p class="url">{nodeData.url}</p>
+          </div>
         </div>
       </div>
     </a>
@@ -66,6 +66,6 @@ const nodeData: NodeData = JSON.parse(props.node);
   }
 
   .url {
-    @apply text-gray-500 text-xs mt-1 truncate mb-0;
+    @apply text-gray-500 text-xs line-clamp-1 mb-0;
   }
 </style>
