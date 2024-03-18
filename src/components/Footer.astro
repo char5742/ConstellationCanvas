@@ -6,7 +6,22 @@ const today = new Date();
 <footer
   class="px-4 py-8 pb-24 bg-gradient-to-b from-gray-100 to-gray-200 text-gray-600 text-center"
 >
-  &copy; {today.getFullYear()} char5742. All rights reserved.
+  <div>
+    <div>
+      <a
+        href="/privacy"
+        class="px-1.5 text-base text-gray-700 hover:underline hover:text-gray-900"
+        >プライバシーポリシー</a
+      >
+      <a
+        href="/rss.xml"
+        class="px-1.5 text-base text-gray-700 hover:underline hover:text-gray-900"
+        >RSS</a
+      >
+    </div>
+    <span>&copy; {today.getFullYear()} char5742. All rights reserved.</span>
+  </div>
+
   <div class="flex justify-center gap-4 mt-4">
     <SocialLinkIcon url="https://bsky.app/profile/stellarcode.dev">
       <span class="sr-only">Follow Char on Bluesky</span>
