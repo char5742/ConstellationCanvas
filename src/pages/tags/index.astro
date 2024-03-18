@@ -4,11 +4,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const posts = await getCollection("blog");
 const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
-
-const pageTitle = "Tags Page";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout
+  title="タフ一覧 | テックブログ"
+  description="テックブログで使用されているすべてのタグを一覧で紹介します。各タグをクリックすると、そのタグが付けられた記事を閲覧できます。"
+>
   <div class="tags">
     {
       tags.map((tag) => (

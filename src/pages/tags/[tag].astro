@@ -19,7 +19,10 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout
+  title=`「${tag}」タグの付いた記事一覧 | テックブログ`
+  description=`テックブログの記事の中から、「${tag}」タグが付けられた記事を一覧で紹介します。${tag}に関連する情報をお探しの方はぜひご覧ください。`
+>
   <p>Posts tagged with {tag}</p>
   <ul>
     {posts.map((post) => <PostCard post={post} />)}
