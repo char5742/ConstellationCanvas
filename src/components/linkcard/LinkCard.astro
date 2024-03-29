@@ -26,13 +26,17 @@ const nodeData: NodeData = JSON.parse(props.node);
       class="block text-inherit no-underline p-5"
     >
       <div class="flex items-center h-full">
-        <Image
-          src={nodeData.imageUrl}
-          alt={nodeData.title}
-          width={1}
-          height={1}
-          class="image"
-        />
+        {
+          nodeData.imageUrl ? (
+            <Image
+              src={nodeData.imageUrl}
+              alt={nodeData.title}
+              width={1}
+              height={1}
+              class="image"
+            />
+          ) : null
+        }
         <div class="ml-6 flex-1 overflow-hidden">
           <h3
             class="text-xl font-bold text-gray-800 hover:text-blue-600 transition duration-200 ease-in-out line-clamp-1"
@@ -41,13 +45,17 @@ const nodeData: NodeData = JSON.parse(props.node);
           </h3>
           <p class="description">{nodeData.description}</p>
           <div class="flex mt-1">
-            <Image
-              src={nodeData.faviconUrl}
-              alt={nodeData.title}
-              width={16}
-              height={16}
-              class="rounded-full object-cover mr-2"
-            />
+            {
+              nodeData.faviconUrl ? (
+                <Image
+                  src={nodeData.faviconUrl}
+                  alt={nodeData.title}
+                  width={16}
+                  height={16}
+                  class="rounded-full object-cover mr-2"
+                />
+              ) : null
+            }
             <p class="url">{nodeData.url}</p>
           </div>
         </div>
