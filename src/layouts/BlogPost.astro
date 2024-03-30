@@ -59,6 +59,15 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
           <slot />
         </div>
       </article>
+      <section>
+        <h2>次に読む記事</h2>
+        <ul>
+          <!-- ここに記事一覧を表示 -->
+          <li>
+            <a href="/blog/2024_3_26">記事タイトル</a>
+          </li>
+        </ul>
+      </section>
     </main>
     <Footer />
   </body>

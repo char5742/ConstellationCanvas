@@ -17,7 +17,7 @@ const posts = (await getCollection("blog")).sort(
     <ul class="flex overflow-x-auto">
       {
         posts.map((post) => (
-          <li class="mr-1 flex-none w-64">
+          <li class="mr-2 flex-none w-64">
             <PostCard post={post} />
           </li>
         ))

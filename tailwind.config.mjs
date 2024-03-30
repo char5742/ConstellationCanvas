@@ -13,44 +13,98 @@ module.exports = {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "var(--md-sys-color-primary)",
+        },
+        "on-primary": {
+          DEFAULT: "var(--md-sys-color-on-primary)",
+        },
+        "primary-container": {
+          DEFAULT: "var(--md-sys-color-primary-container)",
+        },
+        "on-primary-container": {
+          DEFAULT: "var(--md-sys-color-on-primary-container)",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "var(--md-sys-color-secondary)",
         },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+        "on-secondary": {},
+        "secondary-container": {
+          DEFAULT: "var(--md-sys-color-secondary-container)",
         },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+        "on-secondary-container": {
+          DEFAULT: "var(--md-sys-color-on-secondary-container)",
         },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+        tertiary: {
+          DEFAULT: "var(--md-sys-color-tertiary)",
         },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+        "on-tertiary": {
+          DEFAULT: "var(--md-sys-color-on-tertiary)",
         },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+        "tertiary-container": {
+          DEFAULT: "var(--md-sys-color-tertiary-container)",
+        },
+        "on-tertiary-container": {
+          DEFAULT: "var(--md-sys-color-on-tertiary-container)",
+        },
+        error: {
+          DEFAULT: "var(--md-sys-color-error)",
+        },
+        "on-error": {
+          DEFAULT: "var(--md-sys-color-on-error)",
+        },
+        "error-container": {
+          DEFAULT: "var(--md-sys-color-error-container)",
+        },
+        "on-error-container": {
+          DEFAULT: "var(--md-sys-color-on-error-container)",
+        },
+        background: {
+          DEFAULT: "var(--md-sys-color-background)",
+        },
+        "on-background": {
+          DEFAULT: "var(--md-sys-color-on-background)",
+        },
+        surface: {
+          DEFAULT: "var(--md-sys-color-surface)",
+        },
+        "on-surface": {
+          DEFAULT: "var(--md-sys-color-on-surface)",
+        },
+        "surface-variant": {
+          DEFAULT: "var(--md-sys-color-surface-variant)",
+        },
+        "on-surface-variant": {
+          DEFAULT: "var(--md-sys-color-on-surface-variant)",
+        },
+        outline: {
+          DEFAULT: "var(--md-sys-color-outline)",
+        },
+        "outline-variant": {
+          DEFAULT: "var(--md-sys-color-outline-variant)",
+        },
+        shadow: {
+          DEFAULT: "var(--md-sys-color-shadow)",
+        },
+        scrim: {
+          DEFAULT: "var(--md-sys-color-scrim)",
+        },
+        "inverse-surface": {
+          DEFAULT: "var(--md-sys-color-inverse-surface)",
+        },
+        "inverse-on-surface": {
+          DEFAULT: "var(--md-sys-color-inverse-on-surface)",
+        },
+        "inverse-primary": {
+          DEFAULT: "var(--md-sys-color-inverse-primary)",
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        xl: "calc(var(--radius) * 7)",
+        lg: "calc(var(--radius) * 4)",
+        md: "calc(var(--radius) * 3)",
+        sm: "calc(var(--radius) * 2)",
+        xs: "var(--radius)",
       },
       keyframes: {
         "accordion-down": {

@@ -3,8 +3,6 @@ export type Props = { tag: string };
 const { tag } = Astro.props;
 ---
 
-<p
-  class="m-1 border border-dotted border-gray-400 rounded-lg px-2 py-0.5 text-lg bg-blue-50"
->
+<p class="m-1 rounded-sm px-2 py-0.5 text-lg bg-tertiary-container shadow-md">
   <a href={`/tags/${tag}`} class="color-text-blue-600">{tag}</a>
 </p>
