@@ -6,9 +6,11 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import FormattedDate from "@/components/FormattedDate.astro";
 import TagList from "@/components/TagList.astro";
+import RefferenceLink from "@/components/RefferenceLink.astro";
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, tags } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, nextPost, prevPost } =
+  Astro.props;
 ---
 
 <html lang="ja">
@@ -60,13 +62,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
         </div>
       </article>
       <section>
-        <h2>次に読む記事</h2>
-        <ul>
-          <!-- ここに記事一覧を表示 -->
-          <li>
-            <a href="/blog/2024_3_26">記事タイトル</a>
-          </li>
-        </ul>
+        <RefferenceLink nextPost={nextPost} prevPost={prevPost} />
       </section>
     </main>
     <Footer />

@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getEntryBySlug } from "astro:content";
+export type Props = {
+  prevPost?: {
+    collection: "blog";
+    slug: string;
+  };
+  nextPost?: {
+    collection: "blog";
+    slug: string;
+  };
+};
+
+const { prevPost, nextPost } = Astro.props;
+const nextPostEntry = nextPost
+  ? await getEntryBySlug(nextPost.collection, nextPost.slug)
+  : null;
+const prevPostEntry = prevPost
+  ? await getEntryBySlug(prevPost.collection, prevPost.slug)
+  : null;
+---
+
+<div class="flex justify-between mt-8">
+  {
+    nextPost && (
+      <a
+        href={`/blog/${nextPostEntry?.slug}`}
+        class="text-blue-500 hover:text-blue-700 transition duration-200 ease-in-out"
+      >
+        &larr; {nextPostEntry?.data.title}
+      </a>
+    )
+  }
+  {
+    prevPost && (
+      <a
+        href={`/blog/${prevPostEntry?.slug}`}
+        class="text-blue-500 hover:text-blue-700 transition duration-200 ease-in-out ml-auto"
+      >
+        {prevPostEntry?.data.title} &rarr;
+      </a>
+    )
+  }
+</div>
