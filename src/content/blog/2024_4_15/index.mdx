@@ -1,0 +1,41 @@
+---
+title:  Flutter Web+Firebaseでのポイント
+description:  "firebase.json, Fontの設定"
+pubDate: 2024-04-15
+tags: 
+- "Flutter" 
+- "勉強"
+- "つぶやき"
+prevPost: '2024_3_29'
+---
+
+久しぶりにFlutter Webを触った際に、ハマったポイントをメモしておきます。
+
+まずは`firebase.json`の設定です。
+```JSON
+{
+  "hosting": {
+    "public": "build/web",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
+```
+ここで、rewritesの設定が重要で、これがないとリロード時に404エラーが発生します。
+宣言的なルーティングを行っている場合、この設定が必要です。
+私は[go_router](https://pub.dev/packages/go_router)を使っていて、webアプリと同じ挙動をさせたかったので、この設定が必要でした。
+これがないと、例えば`/home`にアクセスした際に、`/home`というファイルが存在しないため、404エラーが発生します。
+rewritesの設定により、パスはそのままで、`index.html`を表示するようになります。
+
+次に、Fontの設定です。
+Flutterのデフォルトでは英文フォントが設定されているため、日本語を混ぜて使うと、範囲選択時などで不揃いになります。
+基本的には[google_fonts](https://pub.dev/packages/google_fonts)を使えば問題ありませんが、豆腐が気になる場合はassetsにフォントファイルを追加して、`pubspec.yaml`に設定することで解決します。
