@@ -9,7 +9,7 @@ import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://ww.stellarcode.dev",
+  site: "https://www.stellarcode.dev",
   integrations: [
     mdx(),
     sitemap(),
