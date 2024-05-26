@@ -1,0 +1,35 @@
+---
+title: 最近のSSGとSSRについて
+description: Next.jsではpartial prerenderingという名称で実装されている。SSGとSSRを混ぜる技術の最近を追いかける。
+pubDate: 2024-05-25
+tags: 
+- "Astro"
+- "勉強"
+- "つぶやき"
+prevPost: '2024_4_15'
+---
+
+### はじめに
+今現在私は、ブログ制作にAstroを使用しています。
+今まではZennで記事を書いていましたが、自分のサイトを持ちたいという思いが強くなり、Astroを使ってサイトを構築することにしました。
+
+とまあそのような範囲であれば、SSGで十分だと思います。しかし最近リアクティブな要素を含むサイトを作りたいという思いが強くなり、その実装方法を探していました。
+
+基本的にはSSG+CSRで実装することができます。AstroではIslandsという区切りでSSGとCSRを使い分けることができます。これこそがAstroの強みです。
+しかし私はクライアント側で状態を持ちたくなく、またViewTransitionを使いたかったので、SSRを使いたいと思いました。例えばボタンを押すと、ボタンが押下済みになったHTMLが表示されるというようなことを実現したかったのです。
+
+### SSGとSSR
+Next.jsではPPR(partial prerendering)という名称で実装されています。これはSSGとSSRを混ぜる技術です。SSGで生成したページに、SSRで生成したページを埋め込むことができます。
+これは例えば、全ユーザーに共通の部分をSSGで生成し、ユーザーごとに変わる部分をSSRで生成するということができます。
+
+https://nextjs.org/learn/dashboard-app/partial-prerendering
+
+### Astroの動向
+Astroでは現在SSGとSSRを混ぜることができません。しかし議論が進んでいるため、近いうちに実装されるかもしれません。私はその実装を楽しみにしています。
+
+https://github.com/withastro/roadmap/discussions/907
+
+### Single Souce of Truth について
+FlutterでSSOTでの開発を行っているため、それが当たり前になってしまいました。それをAstroでも実現したいなと思い、方法を探っていたわけなのですが...これを書いているうちに別の方法を思いついてしまいました。
+SSE(Server Sent Event)とnanostoresを使って、状態はサーバーに持ち、その状態をnanostoresで監視するという方法です。サーバーへは通常のPOST, PUTリクエストを送り、サーバーからはSSEで状態を受け取るという方法です。
+あまり一般的でない理由が私にはわかりませんが、これを使ってみようと思います。
