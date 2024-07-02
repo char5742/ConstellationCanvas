@@ -1,0 +1,87 @@
+---
+title: JavaとSpring Frameworkを学び始めて
+description: ここ3ヶ月ほど学んでいるJavaとSpring Frameworkについての学習記録です。
+pubDate: 2024-07-02
+tags: 
+- "Java"
+- "Spring Framework"
+- "勉強"
+- "つぶやき"
+prevPost: '2024_5_25'
+---
+
+## 学んだこと
+ここ3ヶ月ほど、JavaとSpring Frameworkを学んでいます。Javaは大学で学んだことがあるのですが、それも2年生のときで、それ以降は触っていませんでした。似たような言語であるDartを使っていたので、あまり苦労せずに学ぶことができました。
+
+Spring Framework、特に今回はSpring Bootを使っています。JavaでWebアプリケーションを作る際のデファクトスタンダードであると聞いています。バックエンド周りを調べるときなどに、ちょいちょい出てきていましたし。
+
+### 学んだ構成１つめ
+Spring MVC, JDBC API, Postgresql, Thymeleaf, Spring Security, Thymeleafでの基本的なアプリケーションの作り方を学びました。
+#### Spring MVC
+これは1スレッド1リクエストなシンプルなWEBアプリケーションを作るためのプロジェクトです。
+```java
+@GetMapping("/hello")
+public String hello() {
+    return "Hello, World!";
+}
+
+@PostMapping("/create")
+public String create(){
+    return "created";
+}
+```
+メソッドに上記のようなアノテーションを使って、リクエストを受け取ることができます。
+
+というようにそれぞれのプロジェクトの説明をしようと思ったのですが、長くなりそうなので、今回は省略します。
+
+### 学んだ構成２つめ
+Spring WebFlux, Spring Data Reactive MongoDB, Spring Session, Spring Security, Thymeleafでのリアクティブなアプリケーションの作り方も学びました。
+
+#### Spring WebFlux
+Spring WebFluxはリアクティブなWebアプリケーションを作るためのプロジェクトです。リアクティブ化により、1スレッドで複数のリクエストを処理することができます。
+また、Websocket及びSSE(Server Sent Event)もサポートしています。MVCでも可能ではあるのですが、各クライアント接続が1スレッドを占有するため、同時に接続できるクライアント数がひどく制限されます。
+WebFluxのベースとなるReactorというライブラリにより、リアクティブなプログラミングが可能となるのですが、キーとなるのはMonoとFluxです。MonoはDartでいうFuture、FluxはStreamに似ています。ただしDartとはことなりすべてメソッドチェーンで処理を書かなければなりません。（await, await forが恋しい...）
+基本的にはzipWithやswitchIfEmptyなどのメソッドを使って、非同期処理を行います。
+
+Spring WebFluxは後発ということもあり、仕様が整理されているという印象を受けました。例えばFunctional Endpointsという、関数型プログラミングでエンドポイントを定義する方法があります。
+
+```java
+public RouterFunction<ServerResponse> routes() {
+    return RouterFunctions.route().GET("/hello", request -> ServerResponse.ok().bodyValue("Hello, World!"))
+    .POST("/create", request -> ServerResponse.ok().bodyValue("Created!")).filter(this::authorize)
+    .build();
+}
+```
+
+上記のように、RouterFunctionを使ってエンドポイントを定義することができます。これにより、よくわからないアノテーションを使わなくても、エンドポイントを定義することができます。
+MVCではミドルウェアの処理を追加したい場合、Filterを拡張したクラスをDIに登録する必要がありますが、WebFluxではfilterメソッドを使って、処理を追加することができます。
+これはとても直感的だと思っています。
+まあこのFunctional Endpoints自体はMVCでも使えるようになっているのですが、最初に出てきたのはWebFluxでした。
+
+流行りのマイクロサービスアーキテクチャにおいては、軽量なFunction Endpointsの方が適していそうです。
+https://stackoverflow.com/questions/47092029/difference-between-controller-and-routerfunction-in-spring-5-webflux
+
+
+#### Spring Data Reactive MongoDB
+Firestoreに慣れていることもあり、ドキュメント指向のデータベースを使いたかったので、MongoDBを使いました。
+
+#### Spring Session
+MVCではTomcatのセッションを使っていましたが、WebFluxではデフォルトで提供されておらず、Spring Sessionを使って明示的にセッションを管理する必要があります。
+ドキュメント的にはRedisを使うことが推奨されていましたが、私はin-memoryでしか試せていません。
+Tomcatでもtomcat-redis-session-managerを使えば可能ですが、Spring Sessionを使えばアプリ側で分散対応のセッション管理ができるので、便利だと思います。
+
+#### HTMX
+htmlの属性を使って、よりリアクティブなWebアプリケーションを作ることができます。これはWebFluxと相性が良いと思いますし、Thymeleafとも相性が良いです。
+サーバー側はHeaderを見て、全体を返すかFragmentを返すかを判断することで、SPAのような挙動を実現することができます。
+
+例えば内部による画面遷移時にヘッダーやフッターはそのままに、メインコンテンツだけをサーバーから取得するということが可能です。もちろん外側からアクセスした際には全体を返すこともできます。あとは...郵便番号検索による住所の自動入力などにも使えると思います。
+
+jsを書かずにこれらのことができるのはとても便利だと思います。
+
+適切に構築すればProgressive Enhancementを満たせるため、JavaScriptが使えない環境でも動作させることができます。
+
+### おまけ
+#### Java言語について
+よくkotlinと比較されるJavaですが、ネットでは最新のjavaであればkotlinと同じような機能が使えるという記事を見かけました。ですがまったくそのようなことはなく、kotlinの方が圧倒的に書きやすいです。nullチェックやval, var、named arguments、getter, setterの省略、data classなど、kotlinの方が書きやすいです。Lombokはあれどって感じです。
+
+まあ単に一人で簡易的なアプリケーションを作るだけであればJavaでも問題ないと思いますが、バグの少ない、保守性の高いコードを書くには大変そうだなという認識です。
