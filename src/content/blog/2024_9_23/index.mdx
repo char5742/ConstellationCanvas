@@ -36,12 +36,22 @@ https://hub.logseq.com/integrations/aV9AgETypcPcf8avYcHXQT/logseq-sync-with-git-
 
 デフォルトでは自動commitのみの対応ですが、Giiのフックを使うことで、自動pushも可能です。post-commitフックにpushを追加することで、commit時に自動でpushすることができます。
 
+ですがこのプラグインを入れることで、ショートカットからコミットやプッシュを行うことができます。プラグインを使うことに投稿がなければ、こちらのほうが便利です。
+
+https://github.com/haydenull/logseq-plugin-git
+
 ## AndroidでのLogseqの使い方
 Android版は[公式サイト](https://logseq.com/)からAPKをダウンロードしてインストールすることで使うことができます。
 そのままではファイルのクラウド同期系サービスを使うことが推奨されますが、私はGitを使いたかったので、Termuxを使ってGitを使うことにしました。
 
 ### Termuxのインストール
 [Google Play](https://play.google.com/store/apps/details?id=com.termux)からインストールできます。
+
+```bash
+termux-setup-storage
+```
+上記のコマンドを実行することで、Androidのストレージにアクセスできるようになります。
+すべてのファイルへのアクセス権限がないと、Logseqアプリで作成したファイルにアクセスできないので、必ず実行してください。
 
 ```bash
 pkg install git
