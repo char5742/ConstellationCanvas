@@ -49,7 +49,7 @@
   /* メイン文章で使う濃い色 */
   --text-primary: var(--color-contrast);
   /* primaryより少し明るめ */
-  --text-secondary: oklab(from var(--color-contrast) calc(l + 0.25) a b / 1);
+  --text-secondary: oklab(from var(--color-contrast) calc(l + 0.15) a b / 1);
   /* さらに明度を上げる */
   /* 透明度を下げて印象を薄く */
   --text-disabled: oklab(from var(--color-contrast) calc(l + 0.4) a b / 0.6);
