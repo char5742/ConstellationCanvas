@@ -47,8 +47,9 @@ const { title, description, image = "/favicon.svg" } = Astro.props;
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script
   type="text/partytown"
-  src="https://www.googletagmanager.com/gtag/js?id=G-VC8XBXS481"></script>
-<script type="text/partytown">
+  src="https://www.googletagmanager.com/gtag/js?id=G-VC8XBXS481"
+  is:inline></script>
+<script type="text/partytown" is:inline>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
     dataLayer.push(arguments);
