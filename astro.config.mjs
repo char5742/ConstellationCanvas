@@ -5,9 +5,12 @@ import { remarkLinkCard } from "./src/components/linkcard/remarkLinkCard";
 import remarkBreaks from "remark-breaks";
 import partytown from "@astrojs/partytown";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.stellarcode.dev",
+
   integrations: [
     mdx(),
     sitemap(),
@@ -18,6 +21,7 @@ export default defineConfig({
       },
     }),
   ],
+
   vite: {
     css: {
       transformer: "lightningcss",
@@ -29,8 +33,11 @@ export default defineConfig({
       },
     },
   },
+
   markdown: {
     remarkPlugins: [remarkLinkCard, remarkBreaks],
     extendDefaultPlugins: true,
   },
+
+  adapter: cloudflare(),
 });
