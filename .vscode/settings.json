@@ -5,4 +5,9 @@
     "markdown.copyFiles.destination": {
         "/src/content/**/*": "${documentDirName}/images/${fileName}"
     },
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 80,
+    "css.enabledLanguages": [
+        "astro",
+    ]
 }
