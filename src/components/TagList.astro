@@ -7,14 +7,21 @@ export type Props = {
 const { tags } = Astro.props;
 ---
 
-<div>
-  {tags.map((tag) => <Tag tag={tag} />)}
-</div>
+<ul role="list">
+  {
+    tags.map((tag) => (
+      <li>
+        <Tag tag={tag} />
+      </li>
+    ))
+  }
+</ul>
 
 <style>
-  div {
+  ul {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     gap: 0.5rem;
   }
 </style>

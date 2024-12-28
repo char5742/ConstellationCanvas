@@ -41,9 +41,21 @@
   --link-visited: oklab(
     from var(--accent) calc(l - 0.1) calc(a - 0.03) calc(b - 0.03) / 1
   );
-  --background: oklab(from var(--color-brand) calc(l) a b / 0.05);
+  --background: oklab(from var(--color-brand) calc(l - 0.1) a b / 0.05);
   --on-background: var(--color-contrast);
   --on-primary: var(--color-contrast);
+
+  /* テキストカラー */
+  /* メイン文章で使う濃い色 */
+  --text-primary: var(--color-contrast);
+  /* primaryより少し明るめ */
+  --text-secondary: oklab(from var(--color-contrast) calc(l + 0.25) a b / 1);
+  /* さらに明度を上げる */
+  /* 透明度を下げて印象を薄く */
+  --text-disabled: oklab(from var(--color-contrast) calc(l + 0.4) a b / 0.6);
+  /* disabledより少し暗めにして、より低いコントラスト */
+  /* 透明度をさらに低く設定 */
+  --text-hint: oklab(from var(--color-contrast) calc(l + 0.15) a b / 0.5);
 
   /* フォントサイズ */
   --font-size-xs: clamp(0.75rem, 0.75vw, 0.875rem); /* 12px ～ 14px 程度 */

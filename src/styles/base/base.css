@@ -41,7 +41,7 @@
   h5,
   h6 {
     margin: 0 0 0.5rem 0;
-    color: var(--color-contrast);
+    color: var(--text-primary);
     line-height: 1.2;
   }
   h1 {
@@ -61,6 +61,7 @@
   }
   p {
     font-size: var(--font-size-md);
+    color: var(--text-primary);
   }
 
   a {

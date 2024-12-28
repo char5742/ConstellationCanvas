@@ -10,10 +10,10 @@ const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
   title="タフ一覧 | テックブログ"
   description="テックブログで使用されているすべてのタグを一覧で紹介します。各タグをクリックすると、そのタグが付けられた記事を閲覧できます。"
 >
-  <div class="tags">
+  <div>
     {
       tags.map((tag) => (
-        <p class="tag">
+        <p>
           <a href={`/tags/${tag}`}>{tag}</a>
         </p>
       ))
@@ -26,12 +26,12 @@ const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
     color: #00539f;
   }
 
-  .tags {
+  div {
     display: flex;
     flex-wrap: wrap;
   }
 
-  .tag {
+  p {
     margin: 0.25em;
     border: dotted 1px #a1a1a1;
     border-radius: 0.5em;

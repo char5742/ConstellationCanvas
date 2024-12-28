@@ -6,41 +6,79 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   title="プライバシーポリシー - Google Analytics"
   description="当サイトのGoogle Analytics利用に関するプライバシーポリシーを掲載しています。収集する情報、利用目的、オプトアウト方法などについて説明しています。"
 >
-  <div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-4">
-      プライバシーポリシー - Google Analytics
-    </h1>
-    <p class="mb-4">
-      当サイトでは、Google
-      Analyticsを使用してアクセス情報を収集しています。以下に、Google
-      Analyticsの使用に関するプライバシーポリシーを説明します。
-    </p>
-
-    <h2 class="text-2xl font-bold mb-2">収集する情報</h2>
-    <p class="mb-4">
-      Google
-      Analyticsは、利用者のIPアドレス、アクセス日時、閲覧ページ、利用しているブラウザの種類などの情報を収集します。これらの情報は、個人を特定するものではありません。
-    </p>
-
-    <h2 class="text-2xl font-bold mb-2">情報の利用目的</h2>
-    <p class="mb-4">
-      収集した情報は、当サイトの改善、統計データの作成、利用状況の分析などに使用されます。これらの情報は、サイトの運営や改善に役立てられます。
-    </p>
-
-    <h2 class="text-2xl font-bold mb-2">第三者へのデータ提供</h2>
-    <p class="mb-4">
-      収集した情報は、Google
-      Analyticsの提供元であるGoogleに提供されます。Googleは、この情報を統計的な分析に使用することがあります。ただし、個人を特定できる情報は提供されません。
-    </p>
-
-    <h2 class="text-2xl font-bold mb-2">オプトアウト</h2>
-    <p class="mb-4">
-      利用者は、ブラウザの設定からCookieを無効にすることで、Google
-      Analyticsによる情報の収集を拒否（オプトアウト）することができます。ただし、Cookieを無効にすると、当サイトの一部の機能が利用できなくなる可能性があります。
-    </p>
+  <article>
+    <section>
+      <h1>プライバシーポリシー - Google Analytics</h1>
+      <p>
+        当サイトでは、Google
+        Analyticsを使用してアクセス情報を収集しています。以下に、Google
+        Analyticsの使用に関するプライバシーポリシーを説明します。
+      </p>
+    </section>
+    <section>
+      <h2>収集する情報</h2>
+      <p>
+        Google
+        Analyticsは、利用者のIPアドレス、アクセス日時、閲覧ページ、利用しているブラウザの種類などの情報を収集します。これらの情報は、個人を特定するものではありません。
+      </p>
+    </section>
+    <section>
+      <h2>情報の利用目的</h2>
+      <p>
+        収集した情報は、当サイトの改善、統計データの作成、利用状況の分析などに使用されます。これらの情報は、サイトの運営や改善に役立てられます。
+      </p>
+    </section>
+    <section>
+      <h2>第三者へのデータ提供</h2>
+      <p>
+        収集した情報は、Google
+        Analyticsの提供元であるGoogleに提供されます。Googleは、この情報を統計的な分析に使用することがあります。ただし、個人を特定できる情報は提供されません。
+      </p>
+    </section>
+    <section>
+      <h2>オプトアウト</h2>
+      <p>
+        利用者は、ブラウザの設定からCookieを無効にすることで、Google
+        Analyticsによる情報の収集を拒否（オプトアウト）することができます。ただし、Cookieを無効にすると、当サイトの一部の機能が利用できなくなる可能性があります。
+      </p>
+    </section>
 
     <p class="text-sm text-gray-500">
       このプライバシーポリシーは、予告なく変更される場合があります。変更内容は、当ページに掲載された時点から適用されます。
     </p>
-  </div>
+  </article>
 </BaseLayout>
+
+<style>
+  article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3em 1em;
+  }
+
+  h1 {
+    /* class="text-3xl font-bold mb-4" */
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    margin-bottom: 1em;
+  }
+
+  section {
+    h2 {
+      /*  */
+      font-size: var(--font-size-2xl);
+      font-weight: 700;
+      margin-bottom: 1em;
+    }
+
+    p {
+      margin-bottom: 1em;
+      font-size: var(--font-size-lg);
+    }
+  }
+
+  p:not(section p) {
+    font-size: var(--font-size-sm);
+    color: var(--text-hint);
+  }
+</style>

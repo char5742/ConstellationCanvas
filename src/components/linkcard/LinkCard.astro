@@ -16,45 +16,45 @@ const props = Astro.props;
 const nodeData: NodeData = JSON.parse(props.node);
 ---
 
-<div class="my-6">
-  <a href={nodeData.url} target="_blank">
-    <div class="card">
-      <figure>
+<a href={nodeData.url} target="_blank">
+  <div class="card">
+    <figure>
+      {
+        nodeData.imageUrl ? (
+          <Image
+            src={nodeData.imageUrl}
+            alt={nodeData.title}
+            width={1}
+            height={1}
+          />
+        ) : null
+      }
+    </figure>
+    <figcaption>
+      <header><h3>{nodeData.title}</h3></header>
+      <summary>{nodeData.description}</summary>
+      <footer>
         {
-          nodeData.imageUrl ? (
+          nodeData.faviconUrl ? (
             <Image
-              src={nodeData.imageUrl}
+              src={nodeData.faviconUrl}
               alt={nodeData.title}
-              width={1}
-              height={1}
-              class="image"
+              width={16}
+              height={16}
             />
           ) : null
         }
-      </figure>
-      <figcaption>
-        <header><h3>{nodeData.title}</h3></header>
-        <summary>{nodeData.description}</summary>
-        <footer>
-          {
-            nodeData.faviconUrl ? (
-              <Image
-                src={nodeData.faviconUrl}
-                alt={nodeData.title}
-                width={16}
-                height={16}
-                class="rounded-full object-cover mr-2"
-              />
-            ) : null
-          }
-          <p class="url">{nodeData.url}</p>
-        </footer>
-      </figcaption>
-    </div>
-  </a>
-</div>
+        <p>{nodeData.url}</p>
+      </footer>
+    </figcaption>
+  </div>
+</a>
 
 <style>
+  a {
+    margin: 0 1rem;
+  }
+
   .card {
     display: flex;
     flex-direction: row;
@@ -120,7 +120,7 @@ const nodeData: NodeData = JSON.parse(props.node);
       border-radius: 0.5rem;
     }
 
-    .url {
+    p {
       margin: 0;
       font-size: var(--font-size-sm);
       overflow: hidden;
