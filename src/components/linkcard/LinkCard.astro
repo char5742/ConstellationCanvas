@@ -37,7 +37,7 @@ const nodeData: NodeData = JSON.parse(props.node);
         {
           nodeData.faviconUrl ? (
             <Image
-              src={nodeData.faviconUrl}
+              src={"/api/proxy-image?url=" + nodeData.faviconUrl}
               alt={nodeData.title}
               width={16}
               height={16}
