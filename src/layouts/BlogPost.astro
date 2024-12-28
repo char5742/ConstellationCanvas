@@ -24,7 +24,7 @@ const { title, description, pubDate, updatedDate, tags, nextPost, prevPost } =
       <article>
         <TagList tags={tags} />
         <div class="content">
-          <div aria-label="date">
+          <div class="date">
             <FormattedDate date={pubDate} />
             {
               updatedDate && (
@@ -57,7 +57,7 @@ const { title, description, pubDate, updatedDate, tags, nextPost, prevPost } =
     margin: 0 auto;
   }
 
-  div[aria-label="date"] {
+  .date {
     display: flex;
     justify-content: center;
     margin-bottom: 1rem;

@@ -32,7 +32,7 @@ const nodeData: NodeData = JSON.parse(props.node);
     </figure>
     <figcaption>
       <header><h3>{nodeData.title}</h3></header>
-      <summary>{nodeData.description}</summary>
+      <p>{nodeData.description}</p>
       <footer>
         {
           nodeData.faviconUrl ? (
@@ -104,7 +104,7 @@ const nodeData: NodeData = JSON.parse(props.node);
     -webkit-line-clamp: 1;
   }
 
-  summary {
+  p {
     margin: 0 0 0.5rem 0;
     overflow: hidden;
     display: -webkit-box;
@@ -123,9 +123,6 @@ const nodeData: NodeData = JSON.parse(props.node);
     p {
       margin: 0;
       font-size: var(--font-size-sm);
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
       -webkit-line-clamp: 1;
     }
   }
