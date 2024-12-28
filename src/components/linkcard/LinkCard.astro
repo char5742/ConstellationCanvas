@@ -22,7 +22,7 @@ const nodeData: NodeData = JSON.parse(props.node);
       {
         nodeData.imageUrl ? (
           <Image
-            src={nodeData.imageUrl}
+            src={"/api/proxy-image?url=" + nodeData.imageUrl}
             alt={nodeData.title}
             width={1}
             height={1}
