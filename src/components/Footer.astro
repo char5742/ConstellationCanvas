@@ -3,14 +3,12 @@ const today = new Date();
 ---
 
 <footer>
-  <div>
-    <div class="links">
-      <a href="/privacy">プライバシーポリシー</a>
-      <a href="/rss.xml">RSS</a>
-    </div>
-    <span>&copy; {today.getFullYear()} char5742. All rights reserved.</span>
-  </div>
+  <nav aria-label="Footer Navigation">
+    <a href="/privacy">プライバシーポリシー</a>
 
+    <a href="/rss.xml">RSS</a>
+  </nav>
+  <span>&copy; {today.getFullYear()} char5742. All rights reserved.</span>
   <div class="sns">
     <a href="https://bsky.app/profile/stellarcode.dev" target="_blank">
       <svg
@@ -58,7 +56,7 @@ const today = new Date();
     padding: 1rem 1rem 3rem;
   }
 
-  .links {
+  nav {
     display: flex;
     justify-content: center;
     gap: 1rem;
