@@ -3,28 +3,24 @@ export type Props = { tag: string };
 const { tag } = Astro.props;
 ---
 
-<div>
-  <a href={`/tags/${tag}`}>
-    {tag}
-  </a>
-</div>
+<a href={`/tags/${tag}`}>
+  {tag}
+</a>
 
 <style>
-  div {
+  a {
+    display: block;
     margin: 0.25rem;
     border-radius: 0.25rem;
     padding: 0.125rem 0.5rem;
     font-size: 1.125rem;
     background-color: var(--secondary-container);
+    color: var(--text-secondary);
     box-shadow: var(--shadow-md);
+    text-decoration: none;
 
     &:hover {
       box-shadow: var(--shadow-sm);
     }
-  }
-
-  a {
-    color: var(--text-secondary);
-    text-decoration: none;
   }
 </style>
