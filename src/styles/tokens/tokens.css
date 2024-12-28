@@ -32,7 +32,15 @@
   /* Muted: 彩度を抑えて補助的な要素に */
   --muted: oklab(from var(--color-brand) l calc(a - 0.05) calc(b - 0.05) / 1);
 
-  --link-color: color(var(--primary) contrast(50%));
+  /* リンク用カラー */
+  /* アクセントよりやや暗めにして存在感を出す */
+  --link: oklab(from var(--accent) calc(l - 0.05) a b / 1);
+  /* ホバー時は少し明るく */
+  --link-hover: oklab(from var(--accent) calc(l + 0.05) a b / 1);
+  /* 訪問後はややトーンダウン */
+  --link-visited: oklab(
+    from var(--accent) calc(l - 0.1) calc(a - 0.03) calc(b - 0.03) / 1
+  );
   --background: oklab(from var(--color-brand) calc(l) a b / 0.05);
   --on-background: var(--color-contrast);
   --on-primary: var(--color-contrast);
