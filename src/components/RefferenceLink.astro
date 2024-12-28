@@ -20,25 +20,39 @@ const prevPostEntry = prevPost
   : null;
 ---
 
-<div class="flex justify-between mt-8">
+<nav>
   {
-    nextPost && (
-      <a
-        href={`/blog/${nextPostEntry?.slug}`}
-        class="text-blue-500 hover:text-blue-700 transition duration-200 ease-in-out"
-      >
+    nextPost ? (
+      <a href={`/blog/${nextPostEntry?.slug}`}>
         &larr; {nextPostEntry?.data.title}
       </a>
+    ) : (
+      <a />
     )
   }
   {
     prevPost && (
-      <a
-        href={`/blog/${prevPostEntry?.slug}`}
-        class="text-blue-500 hover:text-blue-700 transition duration-200 ease-in-out ml-auto"
-      >
+      <a href={`/blog/${prevPostEntry?.slug}`}>
         {prevPostEntry?.data.title} &rarr;
       </a>
     )
   }
-</div>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+      text-decoration: none;
+      color: var(--link);
+
+      &:hover {
+        color: var(--link-hover);
+        text-decoration: underline;
+      }
+    }
+  }
+</style>

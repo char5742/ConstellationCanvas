@@ -123,6 +123,10 @@ const nodeData: NodeData = JSON.parse(props.node);
     .url {
       margin: 0;
       font-size: var(--font-size-sm);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
     }
   }
 </style>
