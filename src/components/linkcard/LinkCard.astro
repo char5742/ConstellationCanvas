@@ -17,15 +17,9 @@ const nodeData: NodeData = JSON.parse(props.node);
 ---
 
 <div class="my-6">
-  <div
-    class="border-2 border-gray-200 rounded-xl bg-white shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl"
-  >
-    <a
-      href={nodeData.url}
-      target="_blank"
-      class="block text-inherit no-underline p-5"
-    >
-      <div class="flex items-center h-full">
+  <a href={nodeData.url} target="_blank">
+    <div class="card">
+      <figure>
         {
           nodeData.imageUrl ? (
             <Image
@@ -37,43 +31,98 @@ const nodeData: NodeData = JSON.parse(props.node);
             />
           ) : null
         }
-        <div class="ml-6 flex-1 overflow-hidden">
-          <h3
-            class="text-xl font-bold text-gray-800 hover:text-blue-600 transition duration-200 ease-in-out line-clamp-1"
-          >
-            {nodeData.title}
-          </h3>
-          <p class="description">{nodeData.description}</p>
-          <div class="flex mt-1">
-            {
-              nodeData.faviconUrl ? (
-                <Image
-                  src={nodeData.faviconUrl}
-                  alt={nodeData.title}
-                  width={16}
-                  height={16}
-                  class="rounded-full object-cover mr-2"
-                />
-              ) : null
-            }
-            <p class="url">{nodeData.url}</p>
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
+      </figure>
+      <figcaption>
+        <header><h3>{nodeData.title}</h3></header>
+        <summary>{nodeData.description}</summary>
+        <footer>
+          {
+            nodeData.faviconUrl ? (
+              <Image
+                src={nodeData.faviconUrl}
+                alt={nodeData.title}
+                width={16}
+                height={16}
+                class="rounded-full object-cover mr-2"
+              />
+            ) : null
+          }
+          <p class="url">{nodeData.url}</p>
+        </footer>
+      </figcaption>
+    </div>
+  </a>
 </div>
 
 <style>
-  .image {
-    @apply rounded-lg object-fill h-16 w-16 md:h-20 md:w-40;
+  .card {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: var(--primary-container);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
-  .description {
-    @apply text-gray-600 text-sm line-clamp-2 mb-0;
+  figure {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      border-radius: 0.5rem;
+      width: 5rem;
+      /* TODO(char5742): custom-mediaを使うようにする
+      https://github.com/parcel-bundler/lightningcss/discussions/742
+      https://github.com/vitejs/vite/issues/16593
+       */
+      @media (width > 640px) {
+        width: 10rem;
+      }
+    }
   }
 
-  .url {
-    @apply text-gray-500 text-xs line-clamp-1 mb-0;
+  figcaption {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 2rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  header {
+    margin: 0 0 0.5rem 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  summary {
+    margin: 0 0 0.5rem 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+
+    .image {
+      border-radius: 0.5rem;
+    }
+
+    .url {
+      margin: 0;
+      font-size: var(--font-size-sm);
+    }
   }
 </style>

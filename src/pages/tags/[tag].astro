@@ -5,7 +5,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-  const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())];
+  const uniqueTags = [...new Set(posts.flatMap((post) => post.data.tags))];
   return uniqueTags.map((tag) => {
     const filteredPosts = posts.filter((post) => post.data.tags?.includes(tag));
     return {
@@ -24,7 +24,21 @@ const { posts } = Astro.props;
   description=`テックブログの記事の中から、「${tag}」タグが付けられた記事を一覧で紹介します。${tag}に関連する情報をお探しの方はぜひご覧ください。`
 >
   <p>Posts tagged with {tag}</p>
-  <ul>
-    {posts.map((post) => <PostCard post={post} />)}
+  <ul role="list">
+    {
+      posts.map((post) => (
+        <li>
+          <PostCard post={post} />
+        </li>
+      ))
+    }
   </ul>
 </BaseLayout>
+
+<style>
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+</style>

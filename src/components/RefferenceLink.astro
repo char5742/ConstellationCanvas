@@ -1,23 +1,22 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getEntryBySlug } from "astro:content";
+import { getEntry } from "astro:content";
 export type Props = {
   prevPost?: {
     collection: "blog";
-    slug: string;
+    id: string;
   };
   nextPost?: {
     collection: "blog";
-    slug: string;
+    id: string;
   };
 };
 
 const { prevPost, nextPost } = Astro.props;
 const nextPostEntry = nextPost
-  ? await getEntryBySlug(nextPost.collection, nextPost.slug)
+  ? await getEntry(nextPost.collection, nextPost.id)
   : null;
 const prevPostEntry = prevPost
-  ? await getEntryBySlug(prevPost.collection, prevPost.slug)
+  ? await getEntry(prevPost.collection, prevPost.id)
   : null;
 ---
 

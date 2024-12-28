@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import FormattedDate from "@/components/FormattedDate.astro";
 import TagList from "@/components/TagList.astro";
 interface Props {
@@ -8,16 +8,48 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-<div class="bg-secondary-container rounded-md p-4 h-full flex flex-col">
+<div class="card">
   <a href={`/blog/${post.slug}/`}>
     <h4 class="font-bold">{post.data.title}</h4>
     <p class="text-gray-600 line-clamp-2 text-sm">
       {post.data.description}
     </p>
   </a>
-  <div class="flex-grow"></div>
   <TagList tags={post.data.tags} />
-  <p class="text-gray-400">
+  <p>
     <FormattedDate date={post.data.pubDate} />
   </p>
 </div>
+
+<style>
+  .card {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    background-color: var(--primary-container);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: auto;
+
+    h4 {
+      margin: 0 0 0.5rem 0;
+      text-wrap: wrap;
+      display: -webkit-box; /* 必須 */
+      -webkit-box-orient: vertical; /* 必須 */
+      overflow: hidden; /* 必須 */
+      -webkit-line-clamp: 3; /* 表示する行数を指定 */
+    }
+
+    p {
+      margin: 0;
+      font-size: var(--font-size-sm);
+      display: -webkit-box; /* 必須 */
+      -webkit-box-orient: vertical; /* 必須 */
+      overflow: hidden; /* 必須 */
+      -webkit-line-clamp: 3; /* 表示する行数を指定 */
+    }
+  }
+</style>

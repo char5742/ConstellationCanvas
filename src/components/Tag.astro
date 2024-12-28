@@ -3,6 +3,28 @@ export type Props = { tag: string };
 const { tag } = Astro.props;
 ---
 
-<p class="m-1 rounded-sm px-2 py-0.5 text-lg bg-tertiary-container shadow-md">
-  <a href={`/tags/${tag}`} class="color-text-blue-600">{tag}</a>
-</p>
+<div>
+  <a href={`/tags/${tag}`}>
+    {tag}
+  </a>
+</div>
+
+<style>
+  div {
+    margin: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    font-size: 1.125rem;
+    background-color: var(--secondary-container);
+    box-shadow: var(--shadow-md);
+
+    &:hover {
+      box-shadow: var(--shadow-sm);
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+</style>

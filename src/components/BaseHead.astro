@@ -2,7 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import "@/styles/global.astro";
-import { ViewTransitions } from "astro:transitions";
+import ClientRouter from "astro/components/ClientRouter.astro";
 
 interface Props {
   title: string;
@@ -57,5 +57,5 @@ const { title, description, image = "/favicon.svg" } = Astro.props;
   gtag("config", "G-VC8XBXS481");
 </script>
 
-<ViewTransitions />
+<ClientRouter />
 <link rel="sitemap" href="/sitemap-index.xml" />

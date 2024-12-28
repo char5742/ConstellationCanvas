@@ -14,10 +14,10 @@ const posts = (await getCollection("blog")).sort(
   </p>
   <section>
     <h3>最新の記事</h3>
-    <ul class="flex overflow-x-auto">
+    <ul role="list">
       {
         posts.map((post) => (
-          <li class="mr-2 flex-none w-64">
+          <li>
             <PostCard post={post} />
           </li>
         ))
@@ -25,3 +25,24 @@ const posts = (await getCollection("blog")).sort(
     </ul>
   </section>
 </BaseLayout>
+
+<style>
+  p {
+    font-size: var(--font-size-md);
+    padding-bottom: 3rem;
+  }
+
+  ul {
+    display: flex;
+    overflow-x: scroll;
+
+    li {
+      flex: none;
+      width: 16rem;
+    }
+
+    :not(:last-child of li) {
+      margin-right: 1rem;
+    }
+  }
+</style>

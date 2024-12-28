@@ -1,119 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*───────────────────────────────────────────────────────────
+  カスケードレイヤ宣言
+  tokens -> base -> components -> utilities の順
+───────────────────────────────────────────────────────────*/
+@layer global, tokens, base, components, utilities;
 
-@layer base {
-  :root {
-    --md-sys-color-primary: rgb(21 107 84);
-    --md-sys-color-surface-tint: rgb(21 107 84);
-    --md-sys-color-on-primary: rgb(255 255 255);
-    --md-sys-color-primary-container: rgb(164 242 213);
-    --md-sys-color-on-primary-container: rgb(0 33 23);
-    --md-sys-color-secondary: rgb(75 99 90);
-    --md-sys-color-on-secondary: rgb(255 255 255);
-    --md-sys-color-secondary-container: rgb(206 233 220);
-    --md-sys-color-on-secondary-container: rgb(8 32 24);
-    --md-sys-color-tertiary: rgb(64 99 118);
-    --md-sys-color-on-tertiary: rgb(255 255 255);
-    --md-sys-color-tertiary-container: rgb(195 232 254);
-    --md-sys-color-on-tertiary-container: rgb(0 30 44);
-    --md-sys-color-error: rgb(186 26 26);
-    --md-sys-color-on-error: rgb(255 255 255);
-    --md-sys-color-error-container: rgb(255 218 214);
-    --md-sys-color-on-error-container: rgb(65 0 2);
-    --md-sys-color-background: rgb(245 251 246);
-    --md-sys-color-on-background: rgb(23 29 26);
-    --md-sys-color-surface: rgb(245 251 246);
-    --md-sys-color-on-surface: rgb(23 29 26);
-    --md-sys-color-surface-variant: rgb(219 229 223);
-    --md-sys-color-on-surface-variant: rgb(63 73 68);
-    --md-sys-color-outline: rgb(112 121 116);
-    --md-sys-color-outline-variant: rgb(191 201 195);
-    --md-sys-color-shadow: rgb(0 0 0);
-    --md-sys-color-scrim: rgb(0 0 0);
-    --md-sys-color-inverse-surface: rgb(44 50 47);
-    --md-sys-color-inverse-on-surface: rgb(236 242 237);
-    --md-sys-color-inverse-primary: rgb(136 214 186);
-    --md-sys-color-primary-fixed: rgb(164 242 213);
-    --md-sys-color-on-primary-fixed: rgb(0 33 23);
-    --md-sys-color-primary-fixed-dim: rgb(136 214 186);
-    --md-sys-color-on-primary-fixed-variant: rgb(0 81 62);
-    --md-sys-color-secondary-fixed: rgb(206 233 220);
-    --md-sys-color-on-secondary-fixed: rgb(8 32 24);
-    --md-sys-color-secondary-fixed-dim: rgb(178 204 193);
-    --md-sys-color-on-secondary-fixed-variant: rgb(52 76 67);
-    --md-sys-color-tertiary-fixed: rgb(195 232 254);
-    --md-sys-color-on-tertiary-fixed: rgb(0 30 44);
-    --md-sys-color-tertiary-fixed-dim: rgb(168 204 225);
-    --md-sys-color-on-tertiary-fixed-variant: rgb(39 75 93);
-    --md-sys-color-surface-dim: rgb(213 219 215);
-    --md-sys-color-surface-bright: rgb(245 251 246);
-    --md-sys-color-surface-container-lowest: rgb(255 255 255);
-    --md-sys-color-surface-container-low: rgb(239 245 240);
-    --md-sys-color-surface-container: rgb(233 239 235);
-    --md-sys-color-surface-container-high: rgb(228 234 229);
-    --md-sys-color-surface-container-highest: rgb(222 228 223);
-    --radius: 0.25rem;
-  }
+@import "./reset.css" layer(global);
+@import "./tokens/tokens.css" layer(tokens);
+@import "./base/base.css" layer(base);
+@import "./components/components.css" layer(components);
+@import "./utilities/utilities.css" layer(utilities);
 
-  .dark {
-    --md-sys-color-primary: rgb(136 214 186);
-    --md-sys-color-surface-tint: rgb(136 214 186);
-    --md-sys-color-on-primary: rgb(0 56 42);
-    --md-sys-color-primary-container: rgb(0 81 62);
-    --md-sys-color-on-primary-container: rgb(164 242 213);
-    --md-sys-color-secondary: rgb(178 204 193);
-    --md-sys-color-on-secondary: rgb(30 53 45);
-    --md-sys-color-secondary-container: rgb(52 76 67);
-    --md-sys-color-on-secondary-container: rgb(206 233 220);
-    --md-sys-color-tertiary: rgb(168 204 225);
-    --md-sys-color-on-tertiary: rgb(12 52 70);
-    --md-sys-color-tertiary-container: rgb(39 75 93);
-    --md-sys-color-on-tertiary-container: rgb(195 232 254);
-    --md-sys-color-error: rgb(255 180 171);
-    --md-sys-color-on-error: rgb(105 0 5);
-    --md-sys-color-error-container: rgb(147 0 10);
-    --md-sys-color-on-error-container: rgb(255 218 214);
-    --md-sys-color-background: rgb(15 21 18);
-    --md-sys-color-on-background: rgb(222 228 223);
-    --md-sys-color-surface: rgb(15 21 18);
-    --md-sys-color-on-surface: rgb(222 228 223);
-    --md-sys-color-surface-variant: rgb(63 73 68);
-    --md-sys-color-on-surface-variant: rgb(191 201 195);
-    --md-sys-color-outline: rgb(137 147 142);
-    --md-sys-color-outline-variant: rgb(63 73 68);
-    --md-sys-color-shadow: rgb(0 0 0);
-    --md-sys-color-scrim: rgb(0 0 0);
-    --md-sys-color-inverse-surface: rgb(222 228 223);
-    --md-sys-color-inverse-on-surface: rgb(44 50 47);
-    --md-sys-color-inverse-primary: rgb(21 107 84);
-    --md-sys-color-primary-fixed: rgb(164 242 213);
-    --md-sys-color-on-primary-fixed: rgb(0 33 23);
-    --md-sys-color-primary-fixed-dim: rgb(136 214 186);
-    --md-sys-color-on-primary-fixed-variant: rgb(0 81 62);
-    --md-sys-color-secondary-fixed: rgb(206 233 220);
-    --md-sys-color-on-secondary-fixed: rgb(8 32 24);
-    --md-sys-color-secondary-fixed-dim: rgb(178 204 193);
-    --md-sys-color-on-secondary-fixed-variant: rgb(52 76 67);
-    --md-sys-color-tertiary-fixed: rgb(195 232 254);
-    --md-sys-color-on-tertiary-fixed: rgb(0 30 44);
-    --md-sys-color-tertiary-fixed-dim: rgb(168 204 225);
-    --md-sys-color-on-tertiary-fixed-variant: rgb(39 75 93);
-    --md-sys-color-surface-dim: rgb(15 21 18);
-    --md-sys-color-surface-bright: rgb(52 59 56);
-    --md-sys-color-surface-container-lowest: rgb(9 15 13);
-    --md-sys-color-surface-container-low: rgb(23 29 26);
-    --md-sys-color-surface-container: rgb(27 33 30);
-    --md-sys-color-surface-container-high: rgb(37 43 40);
-    --md-sys-color-surface-container-highest: rgb(48 54 51);
-  }
-}
-
-@layer base {
-  * {
-    /* @apply border-border; */
-  }
-  body {
-    @apply bg-background; /*text-foreground*/
-  }
-}
+/* stylelint-disable-next-line at-rule-no-unknown */
+@custom-media --sm (width > 640px);
+/* stylelint-disable-next-line at-rule-no-unknown */
+@custom-media --md (width > 768px);
+/* stylelint-disable-next-line at-rule-no-unknown */
+@custom-media --lg (width > 1024px);
