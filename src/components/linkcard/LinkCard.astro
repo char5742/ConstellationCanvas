@@ -89,6 +89,8 @@ const nodeData: NodeData = JSON.parse(props.node);
     flex-direction: column;
     justify-content: space-between;
     margin-left: 2rem;
+    overflow: hidden; /* はみ出した部分を非表示 */
+    text-overflow: ellipsis;
   }
 
   a {
