@@ -1,0 +1,48 @@
+---
+title: mod_luaでリバースプロキシを設定する
+description: Apache2.4のmod_luaを使ってリバースプロキシを設定する方法
+pubDate: 2025-1-16
+tags: 
+- "Lua"
+- "Apache"
+prevPost: '2025_1_5'
+---
+ 
+
+## はじめに
+Apache初心者な私がちょっと機会があってApacheとLuaでサーバーを立てることになりました。
+その際に個人的にハマったので、メモがてら書いておきます。
+
+## 作業内容
+今回はhttpd:2.4のイメージを使って、mod_luaを使ってDBアクセスを伴うリバースプロキシを設定します。
+
+
+```dockerfile
+FROM httpd:2.4
+RUN apt-get update && apt-get install -y lua5.3 liblua5.3-dev
+# mysqlを使う場合
+RUN apt-get install -y libaprutil1-dbd-mysql
+
+EXPOSE 80
+```
+
+
+基本的には下のapacheの公式ドキュメントに書いてあることと、ブログ記事を参考にしました。
+
+https://httpd.apache.org/docs/2.4/mod/mod_lua.html
+
+https://ya.maya.st/d/201203c.html
+
+今回利用したのは、LuaHookTranslateNameとLuaHookFixupsです。
+
+LuaHookTranslateNameはリクエストのURLを変更するために使用、LuaHookFixupsはリクエストのヘッダーを変更するために使用します。
+fixupフェーズでないとヘッダーを変更できないため、注意が必要です。
+
+
+## ひっかかった点
+最初はDBにpostgresを採用していたのですが、なぜかqueryは正常に動くのにselectはは動かないという状況になりました。試しにmariaDBに変更したところ、正常に動作しました。
+
+headers_inの書き込みについても、注意が必要でした。仕様でwriteが可になっていますが、これはFixupフェーズでのみ書き込みが可能で、そうでないとエラーが出ます。
+
+## 感想
+Apacheはほぼコピペで設定でき、databaseのアクセスも簡単にできるのでちょっとした認証、リバースプロキシなどはLuaで書いてしまうのもありだと思いました。ちょっと古くて敷居が高いイメージがあったのですが、意外と簡単に設定できたので、今後も使っていきたいと思います。
