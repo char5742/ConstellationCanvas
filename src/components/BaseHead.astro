@@ -5,9 +5,9 @@ import "@/styles/global.astro";
 import ClientRouter from "astro/components/ClientRouter.astro";
 
 interface Props {
-  title: string;
-  description: string;
-  image?: string;
+	title: string;
+	description: string;
+	image?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
